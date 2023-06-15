@@ -1,0 +1,41 @@
+<div class="container">
+    <form (ngSubmit)="handleSubmit()">
+        <div class="mb-3">
+            <label for="id" class="form-label">ID</label>
+            <input type="number" name="id" [(ngModel)]="articulo.id" readonly disabled class="form-control" />
+        </div>
+
+        <div class="mb-3">
+            <label for="codigo" class="form-label">Código</label>
+            <input type="text" name="codigo" [(ngModel)]="articulo.codigo" class="form-control" />
+        </div>
+
+        <div class="mb-3">
+            <label for="denominacion" class="form-label">Denominación</label>
+            <input type="text" name="denominacion" [(ngModel)]="articulo.denominacion" class="form-control" />
+        </div>
+
+        <div class="mb-3">
+            <label for="precio" class="form-label">Precio</label>
+            <input type="number" name="precio" [(ngModel)]="articulo.precio" class="form-control" />
+        </div>
+
+        <div class="mb-3">
+            <label for="idrubro" class="form-label">Rubro</label>
+            <select name="idrubro" (change)="handleChangeRubro()"[(ngModel)]="selectedRubroId"  class="form-select">
+                <option value="-1">--Seleccione--</option>
+                <option *ngFor="let rubro of rubros" [value]="rubro.id">
+                    {{ rubro.denominacion }}
+                </option>
+            </select>
+        </div>
+
+        <button (click)="handleNavigate()" class="btn btn-danger">
+            Cancelar
+        </button>
+
+        <button type="submit" class="btn btn-success">
+            Guardar
+        </button>
+    </form>
+</div>
